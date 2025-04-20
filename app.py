@@ -1,8 +1,8 @@
 from flask import Flask, jsonify, redirect, render_template, request, session, url_for
 from database import init_db
-# from pythonfiles.report import generate_report
-# from pythonfiles.Student_reset_pass import update_student_password
-# from pythonfiles.rec_forgotpassword import update_password
+from pythonfiles.report import generate_report
+from pythonfiles.Student_reset_pass import update_student_password
+from pythonfiles.rec_forgotpassword import update_password
 from pythonfiles.recruiter_register import register_recruiter
 from pythonfiles.create_job import add_job
 from pythonfiles.recruiter_home import get_all_jobs
@@ -157,23 +157,50 @@ def job_details(job_id):
 # ++++++++++++++++++++++++++++++++++++++ END OF STUDENT HOME PAGE +++++++++++++++++++++++++++++
 
 # ++++++++++++++++++++++++++++++++++++++ START OF JOB DETAILS +++++++++++++++++++++++++++++
-
 @app.route('/job/<int:job_id>')
 def job_page(job_id):
-    return render_template('job_details.html')
-    
-
+    return render_template('job_details.html')  
 # ++++++++++++++++++++++++++++++++++++++ END OF JOB DETAILS +++++++++++++++++++++++++++++
 
 # ++++++++++++++++++++++++++++++++++++++ START OF RECRUITER FORGOT PASSWORD +++++++++++++++++++++++++++++
-
+@app.route('/rec_forgot_password')
+def forgot_password_page():
+    return render_template('rec_forgot_password.html')
+@app.route('/forgot_password', methods=['POST'])
+def forgot_password():
+    data = request.get_json()
+    username = data.get('username')
+    new_password = data.get('new_password')
+    confirm_password = data.get('confirm_password')
+    if new_password != confirm_password: 
+        return jsonify({'success': False, 'message': 'Passwords do not match'})
+    return update_password(username, new_password) 
+        
 # ++++++++++++++++++++++++++++++++++++++ END OF RECRUITER FORGOT PASSWORD ++++++++++++++++++++++++++++++
-
+@app.route('/reset-password', methods=['POST'])
+def reset_password():
+    data = request.get_json()
+    usn = data.get('usn')
+    email = data.get('email')
+    new_password = data.get('new_password') 
+    if not usn or not email or not new_password:
+        return jsonify({'success': False, 'message': 'Please fill all the fields'}), 400
+    return update_student_password(usn, email, new_password)
+@app.route('/reset-password-page') 
+def reset_password_page():
+    return render_template('student_reset_password.html') 
 # ++++++++++++++++++++++++++++++++++++++ START OF STUDENT FORGOT PASSWORD +++++++++++++++++++++++++++++
 
 # ++++++++++++++++++++++++++++++++++++++ END OF STUDENT FORGOT PASSWORD +++++++++++++++++++++++++++++
 
 # ++++++++++++++++++++++++++++++++++++++ START OF REPORT PAGE +++++++++++++++++++++++++++++
+@app.route('/report')
+def report_page():
+    return render_template('report.html')
+@app.route('/api/report')
+def api_report_data():
+    report_data = generate_report()
+    return jsonify(report_data) 
 # ++++++++++++++++++++++++++++++++++++++ END OF REPORT PAGE +++++++++++++++++++++++++++++
 
 if __name__ == '__main__':

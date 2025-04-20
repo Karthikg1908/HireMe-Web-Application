@@ -1,11 +1,10 @@
-body {
-    font-family: 'Mallanna', sans-serif;
+body{
+    font-family: 'Mallanna';
     margin: 0;
     padding: 0;
     box-sizing: border-box;
   }
-  
-  header {
+  header{
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -13,41 +12,34 @@ body {
     background-color: #f5f5f5;
     border-bottom: 1px solid #dddddd;
   }
-  
-  h1 {
+  h1{
     margin: 0;
     font-size: 24px;
     font-weight: bold;
   }
-  
   .container {
     display: flex;
     height: calc(100vh - 60px);
   }
-  
   .sidebar {
     width: 200px;
     padding: 20px;
     background-color: #f5f5f5;
     border-right: 1px solid #dddddd;
   }
-  
-  .sidebar h2 {
+  .sidebar h2{
     margin: 0;
     font-size: 18px;
     font-weight: bold;
   }
-  
-  .job-details {
-    flex: 1;
+  .job-details{
+    flex:1;
     padding: 20px;
   }
-  
-  .job-details h2 {
+  .job-details h2{
     margin-top: 0;
   }
-  
-  button {
+  button{
     padding: 10px 20px;
     background-color: #007bff;
     color: #ffffff;
@@ -55,8 +47,6 @@ body {
     border-radius: 5px;
     cursor: pointer;
   }
-  
-  button:hover {
-    background-color: #0056b3;
+  button:hover{
+    background-color: #0056b3; 
   }
-  
