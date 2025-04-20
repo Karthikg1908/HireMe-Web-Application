@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>HireMe</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/index.css') }}">
+  <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='favicon.ico') }}">
+</head>
+<body>
+
+  <!-- Header -->
+  <header>
+    <h1>HireMe</h1>
+    <div class="login-buttons">
+      <button id="student-login-btn" url="{{ url_for('student_login') }}">Student Login</button>
+      <button id="recruiter-login-btn" url="{{ url_for('recruiter_login') }}">Recruiter Login</button>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <main>
+    <section class="hero">
+      <img src="{{ url_for('static', filename='images/logo.png') }}" alt="HireMe Logo" />
+      <div class="negative">
+        <h3>Find jobs with HireMe</h3>
+        <p>We hire based on your skills, not just your resume.</p>
+        <a href="{{ url_for('student_login') }}" class="cta-btn">Get Started</a>
+      </div>
+    </section>
+
+    <!-- Trusted Companies -->
+    <section class="trusted-companies">
+      <h3>Top companies trust us</h3>
+      <div class="companies">
+        <span>Deloitte</span>
+        <span>Meeshoo</span>
+        <span>TCS</span>
+        <span>CGI</span>
+        <span>ITS</span>
+        <span>HCL</span>
+        <span>Infosys</span>
+        <span>L&T</span>
+        <span>ApnaC</span>
+        <span>TPS</span>
+        <span>Figma</span>
+      </div>
+    </section>
+
+    <!-- Statistics -->
+    <section class="stats">
+      <div class="stats-parent-container">
+        <div class="stats-container">
+          <div class="stat-item">
+            <div class="stat-number">10+</div>
+            <div class="stat-description">Companies Hired</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-number">50+</div>
+            <div class="stat-description">Active Students</div>
+          </div>
+        </div>
+        <div class="start-career">
+          <h4>Start your career with HireMe today!</h4>
+          <button id="start-career-btn" url="{{ url_for('student_login') }}">CLICK HERE TO LOGIN</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Features -->
+    <section class="features">
+      <h3>Why Choose HireMe?</h3>
+      <ul>
+        <li>AI-powered resume matching</li>
+        <li>Verified company network</li>
+        <li>Real-time job alerts</li>
+        <li>Student & Recruiter dashboards</li>
+      </ul>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="testimonials">
+      <h3>What our users say</h3>
+      <blockquote>
+        “HireMe helped me land my dream job in just two weeks!” – Anjali M., Student
+      </blockquote>
+      <blockquote>
+        “As a recruiter, I found skilled candidates faster than ever.” – Rajesh T., Recruiter
+      </blockquote>
+    </section>
+
+    <!-- Newsletter Signup -->
+    <section class="newsletter">
+      <h3>Stay Updated</h3>
+      <form action="{{ url_for('subscribe_newsletter') }}" method="post">
+        <input type="email" name="email" placeholder="Enter your email" required />
+        <button type="submit">Subscribe</button>
+      </form>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2025 HireMe. All rights reserved.</p>
+    <div class="socials">
+      <a href="#">LinkedIn</a>
+      <a href="#">Instagram</a>
+      <a href="#">GitHub</a>
+    </div>
+  </footer>
+
+  <!-- JavaScript -->
+  <script src="{{ url_for('static', filename='js/index.js') }}"></script>
+
+</body>
+</html>
