@@ -14,7 +14,7 @@ from flask_cors import CORS
 from reportlab.pdfgen import canvas
 from flask import send_file
 from flask import Flask, render_template, request, redirect, session, url_for, flash
-
+import os
 
 app = Flask(__name__)
 app.secret_key = '2345'
@@ -505,5 +505,5 @@ def edit_profile():
 
 
 if __name__ == '__main__':
-    app.run(debug=True)
-
+    port = int(os.environ.get("PORT", 5000))  
+    app.run(host="0.0.0.0", port=port,debug=True)
