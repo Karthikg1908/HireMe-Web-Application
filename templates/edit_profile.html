@@ -1,9 +1,9 @@
-<!DOCTYPE html>
+ <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Student Registration</title>
+    <title>Edit Profile</title>
     <link href="https://fonts.googleapis.com/css?family=Mallanna" rel="stylesheet">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/student_register.css') }}">
 </head>
@@ -11,60 +11,67 @@
     <main>
         <div>
             <h1>
-                <u>Hello</u>
-                <u>Welcome to HireMe</u>
+                <u>Update</u>
+                <u>Your Profile</u>
             </h1>
         </div>
         <div class="form-container">
-            <form id="student_register" action="/student_register" method="POST">
+            <form id="edit_profile" action="/edit_profile" method="POST" enctype="multipart/form-data">
                 <div class="form-row">
                     <div class="form-column">
                         <div class="form-group">
                             <label for="name">Student Name</label>
-                            <input type="text" id="name" name="name">
+                            <input type="text" id="name" name="name" value="{{ student.name }}">
                         </div>
                         <div class="form-group">
                             <label for="college_name">College Name</label>
-                            <input type="text" id="college_name" name="college_name">
+                            <input type="text" id="college_name" name="college_name" value="{{ student.college_name }}">
                         </div>
                         <div class="form-group">
                             <label for="usn">USN</label>
-                            <input type="text" id="usn" name="usn">
+                            <input type="text" id="usn" name="usn" value="{{ student.usn }}" readonly>
                         </div>
                         <div class="form-group">
                             <label for="email">Email ID</label>
-                            <input type="email" id="email" name="email">
+                            <input type="email" id="email" name="email" value="{{ student.email }}">
                         </div>
                         <div class="form-group">
-                            <label for="password">Set password</label>
+                            <label for="password">New Password</label>
                             <input type="password" id="password" name="password">
                         </div>
                     </div>
                     <div class="form-column">
                         <div class="form-group">
                             <label for="phone_number">Contact Number</label>
-                            <input type="text" id="phone_number" name="phone_number">
+                            <input type="text" id="phone" name="phone" value="{{ student.phone_number }}">
+
                         </div>
                         <div class="form-group">
                             <label for="branch">Branch</label>
-                            <input type="text" id="branch" name="branch">
+                            <input type="text" id="branch" name="branch" value="{{ student.branch }}">
                         </div>
                         <div class="form-group-skills">
                             <label for="skills">Skills</label>
                             <select id="skills" name="skills" class="opion">
                                 <option value="">Select your skills</option>
-                                <option value="python">Python</option>
-                                <option value="java">Java</option>
-                                <option value="javascript">Javascript</option>
-                                <option value="csharp">C#</option>
-                                <option value="sql">SQL</option>
+                                <option value="python" {% if student.skills == 'python' %}selected{% endif %}>Python</option>
+                                <option value="java" {% if student.skills == 'java' %}selected{% endif %}>Java</option>
+                                <option value="javascript" {% if student.skills == 'javascript' %}selected{% endif %}>Javascript</option>
+                                <option value="csharp" {% if student.skills == 'csharp' %}selected{% endif %}>C#</option>
+                                <option value="sql" {% if student.skills == 'sql' %}selected{% endif %}>SQL</option>
                             </select>
                         </div>
-                        <small>Select only one skill</small>
+                        <br><br><br>
+                        <!--
+                        
+                        UPDATE RESUME WORKING ON IT
+
+                        <small>You can update your resume too</small><br><br>
                         <div class="form-group">
                             <label for="resume">Resume</label>
-                            <input type="file" name="resume" required>
-                        </div>
+                            <input type="file" name="resume">
+                        </div> 
+                        -->
                         <div class="form-group">
                             <label for="confirm_password">Confirm Password</label>
                             <input type="password" id="confirm_password" name="confirm_password">
@@ -72,11 +79,11 @@
                     </div>
                 </div>
                 <hr>
-                <button type="submit">SIGNUP</button>
+                <button type="submit">Update Profile</button>
             </form>
         </div>
         <footer>
-            <p>Start your career with HireMe, Today!</p>
+            <p>Keep your HireMe profile updated to stay job-ready!</p>
         </footer>
     </main>
     <script src="{{ url_for('static', filename='js/student_register.js') }}"></script>

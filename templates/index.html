@@ -1,64 +1,178 @@
 <!DOCTYPE html>
-<html lang='en'>
+<html lang="en">
 <head>
-  <meta charset='UTF-8'>
-  <meta name='viewport' content='width=device-width,initial-scale=1.0'>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>HireMe</title>
-  <link rel='stylesheet' href="{{ url_for('static',filename='css/index.css') }}">
-</head> 
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/index.css') }}" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet" />
+</head>
 <body>
-  <header>
+
+  <header> 
     <h1>HireMe</h1>
-    <div class='login-buttons'>
-      <button id='student-login-btn' url="{{ url_for('student_login') }}">Student Login</button>
-     
-      <button id='recruiter-login-btn' url="{{ url_for('recruiter_login') }}">Recruiter Login</button>
-    </div>
+    <nav class="login-buttons">
+      <button onclick="location.href='{{ url_for('student_login') }}'">Student Login</button>
+      <button onclick="location.href='{{ url_for('recruiter_login') }}'">Recruiter Login</button>
+    </nav>
   </header>
+
   <main>
-    <section class='hero'>
-      <img src="{{ url_for('static',filename='images/logo.png') }}" alt='Career with Exskilence Logo'>
-      <div class="negative">
-        <h3>Find jobs with HireMe</h3>
-        <p>We will hire you based on your skills</p>
+    <!-- Hero Section -->
+    <section class="hero">
+      <img src="{{ url_for('static', filename='images/logo.png') }}" alt="HireMe Logo" class="hero-logo" />
+      <div class="intro">
+        <h1>Empowering Careers with HireMe</h1>
+        <p>Where <strong>ambition meets opportunity</strong> — for <em>students ready to stand out</em> and <em>recruiters seeking real-world talent</em>.</p>
       </div>
     </section>
-    <section class='trusted-companies'>
-      <h3>Top companies trust us</h3>
-      <div class='companies'>
-        <span>Deloitee</span>
-        <span>Meeshoo</span>
-        <span>TCS</span>
-        <span>CGI</span>
-        <span>ITS</span>
-        <span>HCL</span>
-        <span>Infosys</span>
-        <span>L&T</span>
-        <span>ApnaC</span>
-        <span>TPS</span>
-        <span>Figma</span>
-      </div>
+
+    <!-- About Section -->
+    <section class="about">
+      <h2>About HireMe</h2>
+      <p><strong>HireMe</strong> is a modern, skill-first career platform that empowers students and early professionals by showcasing what truly matters — <em>skills, projects, and passion</em>, not just degrees.</p>
+      <p>We connect emerging talent with forward-thinking recruiters through a portfolio-driven, verified ecosystem that ensures trust and transparency on both sides.</p>
+      <p>Whether you're a student seeking your first opportunity or a recruiter scouting real-world-ready candidates, <strong>HireMe</strong> helps you skip the noise and focus on potential that performs.</p>
     </section>
-    <section class='stats'>
-      <div class='stats-parent-container'>
-        <div class='stats-container'>
-          <div class='stat-item'>
-            <div class='stat-number'>10+</div>
-            <div class='stat-description'>Companies Hired</div>
-          </div>
-          <div class='stat-item'>
-            <div class='stat-number'>50+</div>
-            <div class='stat-description'>Active students</div>
-          </div>
+
+<!-- Companies Section -->
+<section class="trusted-companies">
+  <h3>Top Companies Trust Us</h3>
+  <div class="companies-wrapper">
+    <div class="companies-track">
+      {% for company in [
+        {'name': 'intel', 'logo': 'intel.png'},
+        {'name': 'L&T', 'logo': 'lt.png'},
+        {'name': 'Figma', 'logo': 'figma.png'},
+        {'name': 'sapient', 'logo': 'sapient.png'},
+        {'name': 'Infosys', 'logo': 'infosys.png'},
+        {'name': 'Meesho', 'logo': 'meesho.png'},
+        {'name': 'Unacademy', 'logo': 'Unacademy.png'},
+        {'name': 'ust', 'logo': 'ust.jpeg'},
+        {'name': 'TCS', 'logo': 'tcs.jpeg'},
+        {'name': 'wipro', 'logo': 'wipro.png'},
+        {'name': 'ionidea', 'logo': 'ionidea.png'},
+        {'name': 'rapido', 'logo': 'rapido.png'},
+        {'name': 'CGI', 'logo': 'cgi.jpeg'},
+        {'name': 'Deloitte', 'logo': 'deloitte.png'},
+        {'name': 'Capgemini', 'logo': 'Capgemini.png'},
+        {'name': 'Accenture', 'logo': 'Accenture.png'}, 
+        {'name': 'HCL', 'logo': 'hcl.png'}, 
+      ] %}
+
+        <div class="company-logo">
+          <img src="{{ url_for('static', filename='logos/' + company.logo) }}" alt="{{ company.name }}">
         </div>
-        <div class='start-career'>
-          <h4>Start your career with HireMe Today!</h4>
-          <button id='start-career-btn' url="{{ url_for('student_login') }}">CLICK HERE TO LOGIN</button>
-          
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+    <section class="how-it-works">
+      <h2>How It Works</h2>
+      <div class="workflow">
+        <div class="step">
+          <h4>1️⃣ Student Applies</h4>
+          <p>Students explore job opportunities and apply with their portfolio and skills.</p>
+        </div>
+        <div class="step">
+          <h4>2️⃣ Recruiter Verifies</h4>
+          <p>Recruiters review the application, verify skills, and check relevant experience.</p>
+        </div>
+        <div class="step">
+          <h4>3️⃣ Get Contacted</h4>
+          <p>If everything looks good, recruiters reach out directly to students.</p>
         </div>
       </div>
     </section>
+
+    <!-- Testimonial Section -->
+    <section class="testimonials">
+      <h2>What Our Users Say</h2>
+      <div class="testimonial-container">
+          <div class="testimonial left">
+              <p>"HireMe has connected me with great opportunities, and I love how skill-focused the platform is!"</p>
+              <p><strong>- John Doe, Student</strong></p>
+          </div>
+          <div class="testimonial left">
+              <p>"The platform helped me find highly skilled candidates, and the process was seamless."</p>
+              <p><strong>- Jane Smith, Recruiter</strong></p>
+          </div>
+          <div class="testimonial right">
+              <p>"I landed my first job through HireMe! The skill-based approach truly made a difference."</p>
+              <p><strong>- Sarah Lee, Graduate</strong></p>
+          </div>
+          <div class="testimonial right">
+              <p>"As a recruiter, HireMe helped us discover talent we couldn’t find on other platforms."</p>
+              <p><strong>- Mark Johnson, Hiring Manager</strong></p>
+          </div>
+      </div>
+  </section>
+  
+  
+    
+  <section class="stats">
+    <div class="stats-parent-container">
+      <div class="start-career">
+        <h2>🚀 Start your career with <span>HireMe</span> today!</h2>
+        <button onclick="location.href='{{ url_for('student_login') }}'">Login & Explore Jobs</button>
+      </div>
+    </div>
+  
+    <div class="stats-container">
+      <div class="stat-item">
+        <div class="stat-number" data-target="15">0</div>
+        <div class="stat-description">Companies Hired</div>
+      </div>
+      
+      <div class="stat-item">
+        <div class="stat-number" data-target="50">0</div>
+        <div class="stat-description">Active Students</div>
+      </div>
+      
+    </div>
+  </section>
+  
+
+<!-- Chat Box -->
+    <div id="chatbot">
+        <button id="roleSelectButton">💬 Need Help?</button>
+        
+        <!-- Role Selection Modal -->
+        <div id="roleModal" style="display:none;">
+            <h2>Select Your Role</h2>
+            <button id="jobSeekerBtn">Job Seeker</button>
+            <button id="recruiterBtn">Recruiter</button>
+        </div>
+
+        <!-- Chat Interface -->
+        <div id="chatPanel" style="display:none;">
+            <div id="chatContent">
+                <!-- Dynamic questions and answers will appear here based on the role -->
+            </div>
+            <div class="chat-options">
+                <!-- The buttons will be generated dynamically -->
+            </div>
+        </div>
+    </div>
+
   </main>
-  <script src="{{ url_for('static',filename='js/index.js') }}"></script> 
+  <footer>
+    Developed with <span class="heart">❤️</span> by 
+    <a href="https://www.linkedin.com/in/karthik-g-04b016210/" target="_blank" class="footer-link">
+        Karthik G
+    </a>
+    <span class="and-symbol">&</span> 
+    <a href="https://www.linkedin.com/in/abhisheka-b-c-5b9623254/" target="_blank" class="footer-link">
+        Abhishek BC
+    </a>
+</footer>
+
+
+<button onclick="scrollToTop()" id="scrollToTopBtn">⬆️</button>
+
+  <script src="{{ url_for('static', filename='js/index.js') }}"></script>
+
 </body>
-</html> 
+</html>
+

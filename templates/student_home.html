@@ -1,30 +1,65 @@
-<html lang='en'>
+<!DOCTYPE html>
+<html lang="en">
+
 <head>
-  <meta charset='UTF-8'>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Student Home</title>
-  <link rel="stylesheet" href="{{ url_for('static',filename='css/student_home.css') }}"> 
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Home</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/student_home.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
 </head>
+
 <body>
-<header>
-  <div class='header-container'>
-    <h1>HireMe</h1>
-    <button id='logout-btn'>Logout</button>
-  </div>
-</header> 
- <main>
-   <div class='sidebar'>
-    <h2>Jobs</h2>
-   </div>
-  <div class='content'>
-    <div class='job-list' id='jobsTableNotApplied'>
-      <h3>Jobs to Apply</h3>
-    </div>
-    <div class='job-list' id='jobsTableApplied'>
-      <h3>Jobs Applied</h3>
-    </div> 
-   </div>
- </main>  
-  <script src="{{ url_for('static',filename='js/student_home.js') }}"></script>
+    <header>
+        <div class="header-container">
+            <h1>HireMe</h1>
+            <div class="header-buttons">
+                <a href="{{ url_for('edit_profile') }}">
+                    <button class="edit-profile-btn">
+                        <i class="fas fa-user"></i>
+                    </button>
+                </a>
+                <a href="{{ url_for('logout') }}" id="logout-btn">Logout</a>
+            </div>
+        </div>
+    </header>    
+    
+    <main>
+        <div class="sidebar">
+            <h2>Jobs</h2>
+        </div>
+
+        <div class="content">
+            <!-- Display Jobs to Apply Section -->
+            <div class="job-list" id="jobsTableNotApplied">
+                <h3>Jobs to Apply</h3>
+                {% for job in jobs %}
+                    {% if job[5] != 'closed' %}  <!-- Exclude closed jobs -->
+                        <div class="job-card">
+                            <h4>{{ job[1] }} - {{ job[2] }}</h4> <!-- job_role and company -->
+                            <p>{{ job[3] }}</p> <!-- package -->
+                            <p>{{ job[4] }}</p> <!-- job_description -->
+
+                            <!-- Apply Button for Open Jobs -->
+                            <form action="{{ url_for('apply_job_route') }}" method="POST">
+                                <button type="submit" name="job_id" value="{{ job[0] }}" class="apply-btn">Apply</button>
+                            </form>
+                        </div>
+                    {% endif %}
+                {% endfor %}
+            </div>
+
+            <!-- Display Jobs Applied Section -->
+            <div class="job-list" id="jobsTableApplied">
+                <h3>Jobs Applied</h3>
+                <!-- Display Jobs the Student Applied For (Add Logic if Needed) -->
+            </div>
+        </div>
+
+    </main>
+
+    <script src="{{ url_for('static', filename='js/student_home.js') }}"></script>
 </body>
+
 </html>
