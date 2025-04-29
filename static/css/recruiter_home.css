@@ -1,103 +1,313 @@
-body{
-    font-family: 'Mallanna';
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+/* Global Layout */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Inter', system-ui, sans-serif;
+  margin: 0;
+  padding: 0;
+  background: linear-gradient(135deg, #e0eafc, #cfdef3);
+  color: #1e293b;
+  overflow-x: hidden;
+  transition: background 0.4s ease;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(100, 116, 139, 0.3);
+  border-radius: 8px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(100, 116, 139, 0.5);
+}
+
+/* Header */
+header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 24px 48px;
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(16px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.06);
+  position: sticky;
+  top: 0;
+  z-index: 99;
+  border-radius: 0 0 24px 24px;
+  animation: fadeInDown 0.5s ease;
+}
+
+h1 {
+  font-size: 30px;
+  font-weight: 700;
+  color: #0f172a;
+  margin: 0;
+}
+
+/* Header container */
+.header-container {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  gap: 24px;
+}
+
+/* Logout Button */
+#logout-btn {
+  margin-left: auto;
+  padding: 12px 26px;
+  background: linear-gradient(to right, #6366f1, #4f46e5);
+  color: #fff;
+  border: none;
+  border-radius: 9999px;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 8px 30px rgba(99, 102, 241, 0.4);
+  transition: all 0.3s ease;
+}
+
+#logout-btn:hover {
+  transform: scale(1.05);
+  background: linear-gradient(to right, #4f46e5, #4338ca);
+}
+
+/* Main Layout */
+main {
+  display: flex;
+  min-height: calc(100vh - 100px);
+}
+
+/* Sidebar */
+.sidebar {
+  width: 250px;
+  padding: 40px 24px;
+  background: rgba(255, 255, 255, 0.55);
+  backdrop-filter: blur(12px);
+  box-shadow: inset -2px 0 10px rgba(0, 0, 0, 0.03);
+  border-right: 1px solid rgba(0, 0, 0, 0.05);
+  border-radius: 0 24px 24px 0;
+  animation: fadeInLeft 0.6s ease;
+}
+
+.sidebar h2 {
+  font-size: 22px;
+  font-weight: 600;
+  margin-bottom: 24px;
+  color: #1e293b;
+}
+
+/* Content */
+.content {
+  flex: 1;
+  padding: 48px;
+  animation: fadeInUp 0.6s ease;
+}
+
+/* Table */
+table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0 15px;
+  margin-bottom: 40px;
+}
+
+th {
+  padding: 16px;
+  background: #f8fafc;
+  color: #111827;
+  font-weight: 600;
+  border-radius: 12px 12px 0 0;
+}
+
+td {
+  padding: 16px;
+  background: #ffffff;
+  border-radius: 0 0 12px 12px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.04);
+  font-size: 15px;
+}
+
+td.description {
+  text-align: center;
+}
+
+/* General Button Style */
+button {
+  padding: 10px 20px;
+  font-size: 14px;
+  border: none;
+  border-radius: 999px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.08);
+}
+
+/* View Button */
+.view-btn {
+  background: linear-gradient(to right, #4ade80, #22c55e);
+  color: white;
+}
+.view-btn:hover {
+  background: linear-gradient(to right, #22c55e, #15803d);
+  transform: scale(1.05);
+}
+
+/* Edit Button */
+.edit-btn {
+  background: linear-gradient(to right, #3b82f6, #2563eb);
+  color: white;
+}
+.edit-btn:hover {
+  background: linear-gradient(to right, #1d4ed8, #1e3a8a);
+  transform: scale(1.05);
+}
+
+/* Delete Button */
+.delete-btn {
+  background: linear-gradient(to right, #ef4444, #dc2626);
+  color: white;
+}
+.delete-btn:hover {
+  background: linear-gradient(to right, #b91c1c, #991b1b);
+  transform: scale(1.05);
+}
+
+/* Create Job Button */
+#create-job-btn {
+  padding: 14px 30px;
+  background: linear-gradient(135deg, #f59e0b, #d97706);
+  color: #ffffff;
+  border-radius: 14px;
+  font-weight: 600;
+  box-shadow: 0 10px 25px rgba(251, 191, 36, 0.3);
+}
+#create-job-btn:hover {
+  transform: translateY(-2px) scale(1.05);
+  background: linear-gradient(to right, #d97706, #b45309);
+}
+
+/* Reports Link */
+#reports {
+  margin-top: 25%;
+  cursor: pointer;
+  font-weight: 600;
+  color: #3b82f6;
+  transition: color 0.3s ease;
+}
+#reports:hover {
+  color: #1e40af;
+}
+
+/* Floating Back Button */
+#back-to-index {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  padding: 14px 22px;
+  background: linear-gradient(to right, #ec4899, #db2777);
+  color: white;
+  border: none;
+  border-radius: 9999px;
+  font-weight: 600;
+  box-shadow: 0 12px 30px rgba(236, 72, 153, 0.4);
+  animation: glow 2s infinite ease-in-out;
+  z-index: 100;
+}
+#back-to-index:hover {
+  transform: scale(1.1);
+  background: linear-gradient(to right, #db2777, #be185d);
+}
+
+/* Job Row - Closed */
+tr.closed-job {
+  background-color: #f3f4f6;
+  color: #9ca3af;
+}
+
+/* Enhanced Toggle Button Styles */
+.toggle-status-btn {
+  padding: 0.6rem 1.2rem;
+  font-size: 1rem;
+  border: none;
+  border-radius: 0.5rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Open Status Style */
+.toggle-status-btn.open {
+  background: linear-gradient(135deg, #4ade80, #22c55e);
+  color: white;
+}
+.toggle-status-btn.open:hover {
+  background: linear-gradient(135deg, #22c55e, #15803d);
+  transform: scale(1.05);
+  box-shadow: 0 6px 10px rgba(34, 197, 94, 0.3);
+}
+
+/* Closed Status Style */
+.toggle-status-btn.closed {
+  background: linear-gradient(135deg, #ef4444, #dc2626);
+  color: white;
+}
+.toggle-status-btn.closed:hover {
+  background: linear-gradient(135deg, #dc2626, #b91c1c);
+  transform: scale(1.05);
+  box-shadow: 0 6px 10px rgba(239, 68, 68, 0.3);
+}
+
+
+/* Animations */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
   }
-  header{
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 10px 20px;
-    background-color: #f5f5f5;
-    border-bottom: 1px solid #dddddd;
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
-  .header-container{
-    display: flex;
-    align-items: center;
-    width: 100%;
+}
+
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
   }
-  h1{
-    margin: 0;
-    font-size: 24px;
-    font-weight: bold;
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
-  #logout-btn{
-    padding: 5px 10px;
-    background-color: #007bff;
-    color:#ffffff;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    margin-left:85%;
+}
+
+@keyframes fadeInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-20px);
   }
-  main{
-    display: flex;
-    height:calc(100vh - 60px); 
+  to {
+    opacity: 1;
+    transform: translateX(0);
   }
-  .sidebar{
-    width: 200px;
-    padding: 20px;
-    background-color: #f5f5f5;
-    border-right: 1px solid #dddddd;
+}
+
+@keyframes glow {
+  0%, 100% {
+    box-shadow: 0 0 20px rgba(219, 39, 119, 0.5);
   }
-  .sidebar h2{
-    margin: 0;
-    font-size: 18px;
-    font-weight: bold;
+  50% {
+    box-shadow: 0 0 30px rgba(219, 39, 119, 0.9);
   }
-  .content{
-    flex:1;
-    padding: 20px;
-  }
-  table{
-    width:100%;
-    border-collapse: collapse;
-    margin-bottom: 20px;
-  }
-  th{
-    padding: 10px;
-    border: 1px solid #dddddd;
-    text-align: left;
-  }
-  td{
-    padding: 10px;
-    border: 1px solid #dddddd;
-    text-align: left;
-  }
-  #reports{
-    text-decoration: underline;
-    margin-top: 10%;
-    cursor: pointer;
-  }
-  th{
-    background-color:#f5f5f5; 
-  }
-  #create-job-btn{
-    padding: 10px 20px;
-    background-color: #007bff;
-    color:#ffffff;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-  }
-  #back-to-index{
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-  }
-  td.description{
-    text-align: center;
-  }
-  .view-btn{
-    padding: 5px 10px;
-    background-color: #007bff;
-    color:#ffffff;
-    border:none;
-    border-radius: 5px;
-    cursor: pointer;
-  }
-  .view-btn:hover{
-    background-color:#0056b3;
-  }
-    
+}
+

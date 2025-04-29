@@ -1,6 +1,6 @@
 import sqlite3
 from flask import jsonify
-def register_student(usn, name, email, password, confirmPassword, skills, branch, college_name, phone_number):
+def register_student(usn, name, email, password, confirmPassword, skills, branch, college_name, phone_number,resume):
     print(name)
     conn = sqlite3.connect('db/hireme.db')
     cursor = conn.cursor()     
@@ -11,7 +11,7 @@ def register_student(usn, name, email, password, confirmPassword, skills, branch
         return jsonify({'redirected': False, 'message': 'User already exists'})
     else:
         if password == confirmPassword:
-            cursor.execute('''INSERT INTO students (usn, student_name, contact_number, college_name, branch, skills, email_id, password) VALUES (?, ?, ?, ?, ?, ?, ?, ?) ''',(usn, name, phone_number, college_name, branch, skills, email, password))
+            cursor.execute('''INSERT INTO students (usn, student_name, contact_number, college_name, branch, skills, email_id, password, resume)  VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)''',(usn,name, phone_number, college_name, branch, skills, email, password, resume))
             conn.commit()
             conn.close()
             return jsonify({'redirected': True, 'url': '/student_login'})

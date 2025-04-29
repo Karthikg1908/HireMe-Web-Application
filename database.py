@@ -13,7 +13,8 @@ def init_db():
     branch TEXT NOT NULL,
     skills TEXT,
     email_id TEXT NOT NULL,
-    password TEXT NOT NULL);
+    password TEXT NOT NULL,
+    resume TEXT);
     ''')
     # Makse sure to paste your sql create query of recruiters inside the literals('''''')
     cursor.execute('''CREATE TABLE IF NOT EXISTS recruiters(
@@ -29,13 +30,18 @@ email_id TEXT NOT NULL);
 
     # Makse sure to paste your sql create query of jobs inside the literals('''''')
 
-    cursor.execute('''CREATE TABLE IF NOT EXISTS jobs(
- id  INTEGER PRIMARY KEY AUTOINCREMENT,
- job_role TEXT NOT NULL,
- company TEXT NOT NULL,
- package TEXT NOT NULL,
- job_description TEXT NOT NULL);
- ''')
+    cursor.execute('''
+    CREATE TABLE IF NOT EXISTS jobs (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    job_role TEXT NOT NULL,
+    company TEXT NOT NULL,
+    package TEXT NOT NULL,
+    job_description TEXT NOT NULL,
+    status TEXT DEFAULT 'open',
+    rec_id INTEGER NOT NULL,
+    FOREIGN KEY (rec_id) REFERENCES recruiters(id)
+    );
+    ''')
 
     # Makse sure to paste your sql create query of student_applications inside the literals('''''')
 
@@ -46,8 +52,16 @@ email_id TEXT NOT NULL);
   status TEXT DEFAULT 'applied',
   FOREIGN KEY (usn) REFERENCES students(usn),
   FOREIGN KEY (job_id) REFERENCES jobs(id),
-  UNIQUE(usn,job_id));
-''')
+  UNIQUE(usn,job_id));''')
 
+    try:
+      cursor.execute("ALTER TABLE student_applications ADD COLUMN action TEXT DEFAULT 'Processing'")
+      print("Column 'action' added.")
+    except sqlite3.OperationalError:
+       pass
     conn.commit()
     conn.close()
+
+
+    
+

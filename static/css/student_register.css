@@ -1,104 +1,227 @@
-body{
-    font-family:'Mallanna';
-    background-color:#ffffff;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    height:100vh;
-    margin:0; 
-  }
-  .form-container{
-    background-color:#D7EBEF;
-    padding: 5%;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    width: 800px;
-    height: 700px; 
-  }
-  form{
-    display:flex;
-    flex-direction: column;
-  }
-  .form-row{
-    display: flex;
-    justify-content:space-between;
-  }
-  .form-column {
-    display: flex;
-    flex-direction: column;
-    width: 48%;
-  }
-  .form-group{
-    display: flex;
-    align-items: center;
-    margin-bottom: 15%;
-    margin-right: 5%;
-  }
-  
-  .form-group-skills{
-    display: flex;
-    align-items: center;
-    margin-bottom: 2%;
-    margin-left: 2%;
-    margin-right: 5%;
-  }  
-  .form-group-skills select {
-    width: 66%;
-  }
-  label {
-    width:40%;
-    margin-right: 10px;
-    text-align: left;
-    font-weight: bold;
-  }
-  input{
-    width:60%;
-    padding: 8px;
-    background-color: #EBF5F7;
-    border: 1px solid #cccccc;
-    border-radius: 5px;
-  }
-  select{
-    width:60%;
-    padding: 8px;
-    background-color: #EBF5F7;
-    border: 1px solid #cccccc;
-    border-radius: 5px;
-  } 
-  hr{
-    margin: 20px 0;
-  }
-  button{
-    width: 20%;
-    padding: 10px;
-    background-color: #2B64D9;
-    color:white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    margin-left: 40%;
-    margin-bottom: 5%;
-  }
-  button:hover{
-    background-color: #003ec4;
-  }
-  p{
-    font-weight: bold;
-    text-align: center;
-    margin-top: 5%;
-    font-size: 22px;
-    color: #555555;
-  }
-  h1{
-    text-align: center;
-    margin-left: 10%;
-    margin-bottom: 7%;
-  }
-  small{
-    margin-left: 50%;
-    padding-bottom: 32%;
-  }
-  
-  
-  
-  
+/* 🔹 General Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+/* 🔹 Background with Elegant Blur */
+body {
+  background: linear-gradient(to right, #141e30, #243b55);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  padding: 20px;
+  position: relative;
+}
+
+/* 🔹 Floating Light Effects (Futuristic Glow) */
+body::before,
+body::after {
+  content: "";
+  position: absolute;
+  width: 250px;
+  height: 250px;
+  background: radial-gradient(circle, rgba(0, 212, 255, 0.8), rgba(0, 0, 0, 0));
+  border-radius: 50%;
+  filter: blur(100px);
+  z-index: -1;
+}
+
+body::before {
+  top: 10%;
+  left: 15%;
+}
+
+body::after {
+  bottom: 10%;
+  right: 15%;
+}
+
+/* 🔹 Glassmorphic Form Container */
+.form-container {
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(20px);
+  padding: 40px;
+  border-radius: 15px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+  width: 800px;
+  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+/* 🔹 Hover Effect */
+.form-container:hover {
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.5);
+}
+
+/* 🔹 Form Layout */
+form {
+  display: flex;
+  flex-direction: column;
+}
+
+/* 🔹 Row Layout */
+.form-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+/* 🔹 Column Layout */
+.form-column {
+  display: flex;
+  flex-direction: column;
+  width: 48%;
+}
+
+/* 🔹 Form Groups */
+.form-group, .form-group-skills {
+  display: flex;
+  align-items: center;
+  margin-bottom: 15px;
+  width: 100%;
+}
+
+/* 🔹 Labels */
+label {
+  width: 40%;
+  font-weight: bold;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+/* 🔹 Input & Select Fields */
+input, select {
+  width: 60%;
+  padding: 12px;
+  background: rgba(255, 255, 255, 0.2);
+  border: none;
+  border-radius: 10px;
+  font-size: 16px;
+  color: white;
+  transition: all 0.3s ease-in-out;
+  outline: none;
+  box-shadow: inset 2px 2px 5px rgba(255, 255, 255, 0.2), inset -3px -3px 6px rgba(0, 0, 0, 0.3);
+}
+
+/* 🔹 Select Dropdown Styling */
+select {
+  width: 60%;
+  padding: 12px;
+  background: rgba(255, 255, 255, 0.2); /* Matches input fields */
+  border: none;
+  border-radius: 10px;
+  font-size: 16px;
+  color: white;
+  appearance: none; /* Removes default arrow */
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+  outline: none;
+  box-shadow: inset 2px 2px 5px rgba(255, 255, 255, 0.2), inset -3px -3px 6px rgba(0, 0, 0, 0.3);
+}
+
+/* 🔹 Dropdown Options Styling */
+select option {
+  background-color: #243b55; /* Background matches other elements */
+  color: white;
+}
+
+/* 🔹 Focus & Selected Option Styling */
+select:focus,
+select:active {
+  background: rgba(255, 255, 255, 0.25); /* Same as input fields */
+  color: white !important;
+  border-bottom: 3px solid #00f5a0;
+  box-shadow: 0 0 15px rgba(0, 245, 160, 0.5);
+  transform: scale(1.05);
+  transition: all 0.3s ease-in-out;
+}
+
+/* 🔹 Override browser default selected behavior */
+select option:checked {
+  background: rgba(255, 255, 255, 0.2); /* Matches other fields */
+  color: white;
+}
+
+
+/* 🔹 Divider */
+hr {
+  border: none;
+  height: 1px;
+  background: rgba(255, 255, 255, 0.3);
+  margin: 20px 0;
+}
+
+/* 🔹 Ultra Modern Button */
+button {
+  width: 40%;
+  padding: 12px;
+  background: linear-gradient(135deg, #00d4ff, #0056b3);
+  color: white;
+  border: none;
+  border-radius: 50px;
+  font-size: 18px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+  display: block;
+  margin: 20px auto;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  position: relative;
+  overflow: hidden;
+}
+
+/* 🔹 Button Hover Animation */
+button::before {
+  content: "";
+  position: absolute;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.3), rgba(0, 0, 0, 0));
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0);
+  transition: transform 0.4s ease-in-out;
+  border-radius: 50%;
+}
+
+button:hover::before {
+  transform: translate(-50%, -50%) scale(1);
+}
+
+button:hover {
+  background: linear-gradient(135deg, #0056b3, #002855);
+  transform: translateY(-3px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+}
+
+/* 🔹 Paragraph Text */
+p {
+  font-weight: bold;
+  text-align: center;
+  margin-top: 20px;
+  font-size: 22px;
+  color: white;
+}
+
+/* 🔹 Headings */
+h1 {
+  text-align: center;
+  color: white;
+  margin-bottom: 20px;
+  font-size: 28px;
+  letter-spacing: 1px;
+}
+
+/* 🔹 Small Text */
+small {
+  display: block;
+  text-align: center;
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 14px;
+  margin-top: 10px;
+}
+
