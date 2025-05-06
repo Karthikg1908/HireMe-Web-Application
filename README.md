@@ -100,8 +100,8 @@ Click the badge above to explore the interactive prototype of **HireMe** built w
 
 ## 🔍 Frontend Screens Overview
 
-> 🧩 **Having trouble viewing the images above?**  
-> No worries! You can find all frontend preview screenshots directly in the [`screenshots/`](https://github.com/your-username/your-repo-name/tree/main/screenshots) folder for a full visual overview.
+> 🧩 **Having trouble viewing the images below?**  
+> No worries! You can find all frontend preview screenshots directly in the [`screenshots/`](https://github.com/Karthikg1908/HireMe-Web-Application/tree/main/screenshots) folder for a full visual overview.
 
 
 ### **Home Page**
@@ -325,3 +325,21 @@ If you'd like to connect for feedback, or if you need any help to run this proje
 
 ---
 
+## 🚀 Show Your Support
+
+If you found **HireMe** helpful, inspiring, or just plain awesome, please consider:
+
+- ⭐ **Starring** the repo to show your appreciation  
+- 🍴 **Forking** it to build your own version or contribute  
+
+<div align="center">
+  <a href="https://github.com/Karthikg1908/HireMe-Web-Application" target="_blank">
+    <img src="https://img.shields.io/github/stars/Karthikg1908/HireMe-Web-Application?style=for-the-badge&logo=github&label=Star&color=ffcc00" alt="GitHub Stars" />
+  </a>
+  &nbsp;&nbsp;
+  <a href="https://github.com/Karthikg1908/HireMe-Web-Application/fork" target="_blank">
+    <img src="https://img.shields.io/github/forks/Karthikg1908/HireMe-Web-Application?style=for-the-badge&logo=github&label=Fork&color=blueviolet" alt="GitHub Forks" />
+  </a>
+</div>
+
+> 💡 Your support means a lot and helps keep the project growing! Thanks for being awesome! 🙌
